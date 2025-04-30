@@ -87,7 +87,7 @@ jobs:
           retention-days: 1
 
   installation-test:
-    needs: [build-images]
+    needs: [build-images, build-mock-image]
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
