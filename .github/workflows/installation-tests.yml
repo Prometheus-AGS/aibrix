@@ -148,8 +148,9 @@ jobs:
               docker tag aibrix/${image}:${{ github.sha }} aibrix/${image}:nightly
           done
 
-          kind load docker-image aibrix/controller-manager:${{ github.sha }} aibrix/gateway-plugins:${{ github.sha }} aibrix/metadata-service:${{ github.sha }} aibrix/runtime:${{ github.sha }} aibrix/vllm-mock:${{ github.sha }} --name installation-test
-          kind load docker-image aibrix/controller-manager:nightly aibrix/gateway-plugins:nightly aibrix/metadata-service:nightly aibrix/runtime:nightly aibrix/vllm-mock:nightly --name installation-test
+          kind load docker-image aibrix/controller-manager:${{ github.sha }} aibrix/gateway-plugins:${{ github.sha }} aibrix/metadata-service:${{ github.sha }} aibrix/runtime:${{ github.sha }} --name installation-test
+          kind load docker-image aibrix/controller-manager:nightly aibrix/gateway-plugins:nightly aibrix/metadata-service:nightly aibrix/runtime:nightly --name installation-test
+          kind load docker-image aibrix/vllm-mock:${{ github.sha }} aibrix/vllm-mock:nightly --name installation-test
 
       - name: Deploy controller with the built image
         run: |
