@@ -69,14 +69,13 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
 
-      # - name: Build ${{ matrix.image }}
-      #   run: |
-      #     GIT_COMMIT_HASH=${{ github.sha }} make docker-build-${{ matrix.image }}
-
-      - name: Save image
+      - name: Build vllm-mock
         run: |
           cd development/app
           docker build -t aibrix/vllm-mock:${{ github.sha }} -f Dockerfile .
+
+      - name: Save image
+        run: |
           docker save aibrix/vllm-mock:${{ github.sha }} > vllm-mock.tar
 
       - name: Upload image artifact
