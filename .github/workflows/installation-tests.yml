@@ -163,6 +163,7 @@ jobs:
 
       - name: Deploy Workload
         run: |
+          cd development/app
           kubectl create -k config/mock
 
       - name: Check pod status
