@@ -86,7 +86,7 @@ jobs:
           retention-days: 1
   
   delete-artifacts:
-    needs: [installation-test]
+    needs: [build-mock-image]
     runs-on: ubuntu-latest  
     steps:   
       - uses: geekyeggo/delete-artifact@v5
